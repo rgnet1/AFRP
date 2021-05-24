@@ -18,6 +18,8 @@
     <string name="des5">des5</string>
     <string name="des6">des6</string>
 
+    <string name="url1">https://google.com</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

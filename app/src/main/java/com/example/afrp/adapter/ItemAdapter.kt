@@ -34,7 +34,14 @@ class ItemAdapter(private val context: Context,
         vh.itemView.setOnClickListener{
             val position = vh.adapterPosition
             if(position != NO_POSITION){
-                Toast.makeText(context, "Position clicked", Toast.LENGTH_SHORT ).show()
+                Toast.makeText(context, "Position clicked", Toast.LENGTH_SHORT).show()
+                val url = dataset[position].url
+//                val weFragment: WebFragment
+
+//                val webPageFragment =  WebFragment()
+//                val transaction = supportFragmentManager.beginTransaction()
+//                transaction.replace(R.id.fragment_container, webPageFragment)
+//                transaction.commit()
             }
         }
         return vh

@@ -39,10 +39,6 @@ class NewsFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.adapter = context?.let { ItemAdapter(it, myDataset) }
 
-
-
-
-
 //        val clickMe = view.findViewById(R.id.news) as TextView
 //        clickMe.setOnClickListener{
 //            Toast.makeText(context, "Clicked News", Toast.LENGTH_SHORT).show()
