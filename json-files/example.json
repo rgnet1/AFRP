@@ -1,0 +1,15 @@
+{
+	"articles": [{
+			"title": "title1",
+			"desc": "description1",
+			"image": "https://github.com/rgnet1/afrp/images/article1.png",
+            "url": "https://google.com"
+		},
+		{
+			"title": "title1",
+			"desc": "description1",
+			"image": "https://github.com/rgnet1/afrp/images/article1.png",
+            "url": "https://reddit.com"
+		}
+	]
+}
