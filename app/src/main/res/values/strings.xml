@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">AFRP</string>
+    <string name="menu_title_news">News</string>
+    <string name="menu_title_conventions">Conventions</string>
+    <string name="menu_title_notifications">Notifications</string>
+
+    <string name="title1">Main1</string>
+    <string name="title2">Main2</string>
+    <string name="title3">Main3</string>
+    <string name="title4">Main4</string>
+    <string name="title5">Main5</string>
+    <string name="title6">Main6</string>
+
+    <string name="des1">des1</string>
+    <string name="des2">des2</string>
+    <string name="des3">des3</string>
+    <string name="des4">des4</string>
+    <string name="des5">des5</string>
+    <string name="des6">des6</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

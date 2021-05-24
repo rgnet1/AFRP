@@ -1,0 +1,2 @@
+rootProject.name = "AFRP"
+include ':app'
