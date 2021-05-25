@@ -1,0 +1,22 @@
+{
+	"articles": [{
+			"title": "Jacksonville  Convention",
+			"desc": "June 30 - July 3, 2021",
+			"image": "https://raw.githubusercontent.com/rgnet1/AFRP/master/json-files/oceanFrontBrunch/oceanFrontBrunch_files/image001.jpg",
+            "url": "https://https://www.debkeinduval.com/"
+	},
+	{
+		"title": "Membership: Become a Member",
+		"desc": "become a member today!",
+		"image":"",
+		"url": "https://afrp.org/membership/"
+	},
+	{
+		"title": "AFRP Statement - Saeb Erekat",
+		"desc": "Passing of Palestinian negotiator Mr. Saeb Erekat",
+		"image":"",
+		"url": "https://afrp.org/latest-news/press-releases/afrp-statement-saeb-erekat/"
+	}
+
+	]
+}

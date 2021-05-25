@@ -1,0 +1,21 @@
+{
+	"articles": [{
+			"title": "Ladies Ocean Beach Front",
+			"desc": "Thursday, July 1",
+			"image": "https://raw.githubusercontent.com/rgnet1/AFRP/master/json-files/oceanFrontBrunch/oceanFrontBrunch_files/image001.jpg",
+            "url": "https://htmlpreview.github.io/?https://github.com/rgnet1/AFRP/blob/master/json-files/oceanFrontBrunch/oceanFrontBrunch.html"
+		},
+		{
+			"title": "Casino Night",
+			"desc": "Thursday, July 1",
+			"image": "https://raw.githubusercontent.com/rgnet1/AFRP/master/json-files/casinoNight/CasinoNight_files/image001.jpg",
+            "url": "https://htmlpreview.github.io/?https://github.com/rgnet1/AFRP/blob/master/json-files/casinoNight/CasinoNight.html"
+		},
+		{
+			"title": "Havana Night",
+			"desc": "Friday, July 2",
+			"image": "https://raw.githubusercontent.com/rgnet1/AFRP/master/json-files/havanaNight/HavanaNight_files/image001.jpg",
+            "url": "https://htmlpreview.github.io/?https://github.com/rgnet1/AFRP/blob/master/json-files/havanaNight/HavanaNight.html"
+		}
+	]
+}
