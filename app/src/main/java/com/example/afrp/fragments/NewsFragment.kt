@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.example.afrp.R
 import com.example.afrp.adapter.ItemAdapter
 import com.example.afrp.data.Datasource
 import com.example.afrp.databinding.FragmentNewsBinding
@@ -41,8 +39,7 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // initalize recyler view - where all articles are displayed
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+
 
         // start a thread with scope of "main" so it has context to update UI
         GlobalScope.launch(Dispatchers.Main) {
@@ -51,7 +48,10 @@ class NewsFragment : Fragment() {
             val myDataSet = withContext(Dispatchers.IO) {
                 Datasource().loadNews("https://raw.githubusercontent.com/rgnet1/AFRP/master/json-files/news.json")
             }
-
+            // initalize recyler view - where all articles are displayed
+            val recyclerView = binding.recyclerView
+            recyclerView.visibility = View.VISIBLE
+//            val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
             // update UI in Main thread
             recyclerView.adapter = context?.let { ItemAdapter(it, myDataSet) }
         }
