@@ -10,6 +10,10 @@ import com.example.afrp.R
 import com.example.afrp.adapter.ItemAdapter
 import com.example.afrp.data.Datasource
 import com.example.afrp.databinding.FragmentNewsBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * A simple [Fragment] subclass.
@@ -26,6 +30,8 @@ class NewsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
+
+
         return binding.root
 
 //        return inflater.inflate(R.layout.fragment_news, container, false)
@@ -35,14 +41,20 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val myDataset = Datasource().loadNews()
+        // initalize recyler view - where all articles are displayed
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.adapter = context?.let { ItemAdapter(it, myDataset) }
 
-//        val clickMe = view.findViewById(R.id.news) as TextView
-//        clickMe.setOnClickListener{
-//            Toast.makeText(context, "Clicked News", Toast.LENGTH_SHORT).show()
-//        }
+        // start a thread with scope of "main" so it has context to update UI
+        GlobalScope.launch(Dispatchers.Main) {
+            // but start an IO thread so it can grab and return data
+            // Main threads don't like fetching data
+            val myDataSet = withContext(Dispatchers.IO) {
+                Datasource().loadNews()
+            }
+
+            // update UI in Main thread
+            recyclerView.adapter = context?.let { ItemAdapter(it, myDataSet) }
+        }
 
     }
 

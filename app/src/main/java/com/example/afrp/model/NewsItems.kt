@@ -2,8 +2,8 @@ package com.example.afrp.model
 
 // data class holds data
 data class NewsItems(
-    val mainTitle: Int,
-    val description: Int,
-    val image: Int,
-    val url: Int
+    val mainTitle: String,
+    val description: String,
+    val image: String,
+    val url: String
 )

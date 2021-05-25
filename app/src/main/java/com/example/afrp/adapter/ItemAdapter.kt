@@ -1,6 +1,8 @@
 package com.example.afrp.adapter
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,8 @@ import androidx.recyclerview.widget.DiffUtil.DiffResult.NO_POSITION
 import androidx.recyclerview.widget.RecyclerView
 import com.example.afrp.R
 import com.example.afrp.model.NewsItems
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 
 class ItemAdapter(private val context: Context,
                   private val dataset: List<NewsItems>,
@@ -52,9 +56,23 @@ class ItemAdapter(private val context: Context,
     // Binds data set to a row in the view
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.title.text = context.resources.getString(item.mainTitle)
-        holder.desc.text = context.resources.getString(item.description)
-        holder.img.setImageResource(item.image)
+        holder.title.text = item.mainTitle
+        holder.desc.text = item.description
+        val imageUrl: String = item.image
+
+        // Set image
+        Picasso.get()
+            .load(imageUrl)
+            .into(holder.img, object : Callback {
+                override fun onSuccess() {
+                    Log.d(TAG, "success")
+                }
+
+                override fun onError(e: Exception?) {
+                    Log.d(TAG, "error")
+                }
+            })
+//        holder.img.setImageResource(item.image)
 
     }
 
