@@ -15,10 +15,8 @@ class Datasource {
         )
     }
 
-    fun loadNews(): List<NewsItems> {
-//            Log.d(TAG,"IN HERE FIRST")
-        val myData: JSONObject? = getData()
-//            Log.d(TAG,"IN HERE SECOND")
+    fun loadNews(url: String): List<NewsItems> {
+        val myData: JSONObject? = getData(url)
         println("HELLO There. after second")
         println("MY DATA IS: $myData")
         if (myData == null) {
@@ -31,31 +29,20 @@ class Datasource {
         val news: JSONArray = myData.getJSONArray("articles")
 //            Log.d(TAG,"HERENEWS $news")
         for (i in 1..news.length()) {
-            Log.d(TAG, "IN LOOP")
             val article: JSONObject = news.getJSONObject(i - 1)
             val title: String = article.getString("title")
             val description: String = article.getString("desc")
             val imageUrl: String = article.getString("image")
             val url: String = article.getString("url")
-            Log.d(TAG, "HERE $title")
             items.add(NewsItems(title, description, imageUrl, url))
         }
-//            println("$items")
         return items
 
-//        return listOf<NewsItems>(
-//            NewsItems(R.string.title1, R.string.des1, R.drawable.battlefront_2005, R.string.url1),
-//            NewsItems(R.string.title2, R.string.des2, R.drawable.battlefront_2005, R.string.url1),
-//            NewsItems(R.string.title3, R.string.des3, R.drawable.battlefront_2005, R.string.url1),
-//            NewsItems(R.string.title4, R.string.des4, R.drawable.battlefront_2005, R.string.url1),
-//            NewsItems(R.string.title5, R.string.des5, R.drawable.battlefront_2005, R.string.url1),
-//            NewsItems(R.string.title6, R.string.des6, R.drawable.battlefront_2005, R.string.url1)
-//        )
     }
 
-    private fun getData(): JSONObject? {
+    private fun getData(url: String): JSONObject? {
         val json =
-            URL("https://raw.githubusercontent.com/rgnet1/AFRP/master/json-files/example.json").readText()
+            URL(url).readText()
         var jsonObject: JSONObject? = null
         try {
             jsonObject = JSONObject(json)

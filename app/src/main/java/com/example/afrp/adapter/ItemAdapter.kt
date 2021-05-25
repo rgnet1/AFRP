@@ -41,7 +41,7 @@ class ItemAdapter(private val context: Context,
                 Toast.makeText(context, "Position clicked", Toast.LENGTH_SHORT).show()
                 val url = dataset[position].url
 //                val weFragment: WebFragment
-
+//
 //                val webPageFragment =  WebFragment()
 //                val transaction = supportFragmentManager.beginTransaction()
 //                transaction.replace(R.id.fragment_container, webPageFragment)
@@ -60,18 +60,20 @@ class ItemAdapter(private val context: Context,
         holder.desc.text = item.description
         val imageUrl: String = item.image
 
-        // Set image
-        Picasso.get()
-            .load(imageUrl)
-            .into(holder.img, object : Callback {
-                override fun onSuccess() {
-                    Log.d(TAG, "success")
-                }
+        if (imageUrl.isNotBlank()) {
+            // Set image
+            Picasso.get()
+                .load(imageUrl)
+                .into(holder.img, object : Callback {
+                    override fun onSuccess() {
+                        Log.d(TAG, "success")
+                    }
 
-                override fun onError(e: Exception?) {
-                    Log.d(TAG, "error")
-                }
-            })
+                    override fun onError(e: Exception?) {
+                        Log.d(TAG, "error")
+                    }
+                })
+        }
 //        holder.img.setImageResource(item.image)
 
     }

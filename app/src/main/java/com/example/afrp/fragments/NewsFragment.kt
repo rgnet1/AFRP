@@ -49,7 +49,7 @@ class NewsFragment : Fragment() {
             // but start an IO thread so it can grab and return data
             // Main threads don't like fetching data
             val myDataSet = withContext(Dispatchers.IO) {
-                Datasource().loadNews()
+                Datasource().loadNews("https://raw.githubusercontent.com/rgnet1/AFRP/master/json-files/news.json")
             }
 
             // update UI in Main thread

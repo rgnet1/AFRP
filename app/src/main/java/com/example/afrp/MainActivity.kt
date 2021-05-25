@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Default, start with newsFragment
-        replaceFragment(conventionFragment)
+        replaceFragment(newsFragment)
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             val goToFragment = when(it.itemId){
