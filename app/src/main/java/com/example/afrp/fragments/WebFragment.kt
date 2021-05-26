@@ -1,11 +1,13 @@
 package com.example.afrp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.afrp.R
+import com.example.afrp.databinding.FragmentWebBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -13,41 +15,36 @@ import com.example.afrp.R
  * create an instance of this fragment.
  */
 class WebFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-
-        }
-    }
+//    private lateinit var communicator: FragmentCommunicator
+    var url:String?=""
+    private var _binding: FragmentWebBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_web, container, false)
+        _binding= FragmentWebBinding.inflate(inflater, container, false)
 
-        return view
-    }
+        url = arguments?.getString("url")
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WebFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WebFragment().apply {
-                arguments = Bundle().apply {
+        Log.i("Web Fragment", "URL: $url" )
+        url.let{
+            if (it != null) {
 
-                }
+                binding.webView.loadUrl(it)
+            }else{
+                Toast.makeText(context, "Null link", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        return binding.root
     }
+
+
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        binding
+//    }
 }

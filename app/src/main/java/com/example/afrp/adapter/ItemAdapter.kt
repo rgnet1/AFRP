@@ -11,14 +11,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil.DiffResult.NO_POSITION
 import androidx.recyclerview.widget.RecyclerView
+import com.example.afrp.FragmentCommunicator
 import com.example.afrp.R
 import com.example.afrp.model.NewsItems
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-
 class ItemAdapter(private val context: Context,
                   private val dataset: List<NewsItems>,
-                  ): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+                  private val communicator: FragmentCommunicator): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+//    private lateinit var communicator: FragmentCommunicator
 
     class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view){
         val title: TextView = view.findViewById(R.id.titleTextView)
@@ -29,17 +30,21 @@ class ItemAdapter(private val context: Context,
     /**
      * Create new views (invoked by the layout manager)
      */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ItemViewHolder {
         // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.news_row, parent, false)
-
+//        this.communicator = communicator
         val vh = ItemViewHolder(adapterLayout)
         vh.itemView.setOnClickListener{
             val position = vh.adapterPosition
             if(position != NO_POSITION){
-                Toast.makeText(context, "Position clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Position $position", Toast.LENGTH_SHORT).show()
                 val url = dataset[position].url
+                communicator.passData(url)
+//                communicator.passData(url)
+//                itemClick(url)
+
 //                val weFragment: WebFragment
 //
 //                val webPageFragment =  WebFragment()
